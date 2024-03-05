@@ -31,3 +31,34 @@ treatment, mostly if enforcement practices appear biased or inequitable. Residen
 Communities affected by unequal enforcement 
 - Communities that often get hit harder with parking tickets would endure more fines. Hence
 more financial stress from piling up tickets, making it tougher to afford other things. Plus, increased enforcement could make it trickier for residents in these areas to get to important places like work or the grocery store.
+
+### **Dataset Description**
+
+Tag Number Masked: Ticket ID of the individual row, half the ID is masked for privacy purposes. 
+
+Date of Infraction: Date of which the ticket was issued. 
+
+Infraction Code: The code number for the type of parking offence. 
+
+Infraction Description: Description of the parking offence type. 
+
+Set Fine Amount: The total fine amount for the offence. 
+
+Time of Infraction: Time of which the parking offence occured. 
+
+Location 1: Speicification of where the car was located based on address (At, On, South Side, West Side etc.)
+
+Location 2: Address of parking offence. 
+
+Location 3: Speicification of where the car was located based on address (North of, East of, etc.)
+
+Location 4: Address of parking offence. Possibly a intersection from location 1. 
+
+Province: Province of location. 
+
+### **Repository Navigation Instructions**
+Folders:
+1. Docs - Sprint 0, Sprint 1 Documents
+2. Notebooks - Jupyter Notebook files
+3. README.md
+4. myenv.yml
