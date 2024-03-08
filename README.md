@@ -34,27 +34,19 @@ more financial stress from piling up tickets, making it tougher to afford other 
 
 ### **Dataset Description**
 
-Tag Number Masked: Ticket ID of the individual row, half the ID is masked for privacy purposes. 
-
-Date of Infraction: Date of which the ticket was issued. 
-
-Infraction Code: The code number for the type of parking offence. 
-
-Infraction Description: Description of the parking offence type. 
-
-Set Fine Amount: The total fine amount for the offence. 
-
-Time of Infraction: Time of which the parking offence occured. 
-
-Location 1: Speicification of where the car was located based on address (At, On, South Side, West Side etc.)
-
-Location 2: Address of parking offence. 
-
-Location 3: Speicification of where the car was located based on address (North of, East of, etc.)
-
-Location 4: Address of parking offence. Possibly a intersection from location 1. 
-
-Province: Province of location. 
+| Column                 | Description                                                                                       |   
+|------------------------|---------------------------------------------------------------------------------------------------|
+| Tag Number Masked      | Ticket ID of the individual row, half the ID is masked for privacy purposes.                      | 
+| Date of Infraction     | Date of which the ticket was issued.                                                              |  
+| Infraction Code        | The code number for the type of parking offence.                                                  |  
+| Infraction Description | Description of the parking offence type.                                                          |  
+| Set Fine Amount        | The total fine amount for the offence.                                                            | 
+| Time of Infraction     | Time of which the parking offence occured.                                                        |  
+| Location 1             | Speicification of where the car was located based on address (At, On, South Side, West Side etc.) |  
+| Location 2             | Address of parking offence.                                                                       |   
+| Location 3             | Speicification of where the car was located based on address (North of, East of, etc.)            |   
+| Location 4             | Address of parking offence. Possibly a intersection from location 1.                              |  
+| Province               | Province of location.                                                                             | 
 
 ### **Repository Navigation Instructions**
 Folders:
