@@ -49,9 +49,9 @@ more financial stress from piling up tickets, making it tougher to afford other 
 | Province               | Province of vehicle liscense plate.                                                               | 
 
 ### **Project Composition**
-- Notebook 1: Part 1 Data Cleaning and EDA
-- Notebook 2: Part 2 Feature Engineering, Grouping and EDA
-- Notebook 3: Part 3 Modeling
+- Notebook 1: Data Cleaning and EDA
+- Notebook 2: Feature Engineering, Preprocessing and EDA
+- Notebook 3: Modeling
 
 ### **Repository Navigation Instructions**
 Folders:
