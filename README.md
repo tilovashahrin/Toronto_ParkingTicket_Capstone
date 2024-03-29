@@ -46,7 +46,12 @@ more financial stress from piling up tickets, making it tougher to afford other 
 | Location 2             | Address of parking offence.                                                                       |   
 | Location 3             | Speicification of where the car was located based on address (North of, East of, etc.)            |   
 | Location 4             | Address of parking offence. Possibly a intersection from location 1.                              |  
-| Province               | Province of location.                                                                             | 
+| Province               | Province of vehicle liscense plate.                                                               | 
+
+### **Project Composition**
+- Notebook 1: Part 1 Data Cleaning and EDA
+- Notebook 2: Part 2 Feature Engineering, Grouping and EDA
+- Notebook 3: Part 3 Modeling
 
 ### **Repository Navigation Instructions**
 Folders:
