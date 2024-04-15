@@ -68,18 +68,39 @@ more financial stress from piling up tickets, making it tougher to afford other 
 
 The implementation of predictive modeling in parking enforcement has the potential to significantly impact urban mobility and management. Here are some key ways in which my solution can make a difference:
 
-### 1. Improved Resource Allocation:
+#### 1. Improved Resource Allocation:
 By accurately predicting areas with a higher likelihood of parking violations, parking enforcement authorities can allocate their resources more efficiently. This targeted approach ensures that enforcement efforts are focused where they are most needed, optimizing manpower and reducing operational costs.
 
-### 2. Enhanced Safety:
+#### 2. Enhanced Safety:
 Illegal parking in restricted zones such as fire lanes or pedestrian crossings poses significant safety risks. This solution promotes safer streets and reduces the likelihood of accidents and emergencies, ultimately enhancing public safety and well-being.
 
-### 3. Positive Environmental Impact:
+#### 3. Positive Environmental Impact:
 Efficient parking enforcement contributes to the reduction of vehicle emissions and environmental pollution by minimizing unnecessary traffic congestion and idling. By promoting smoother traffic flow and reducing the time spent searching for parking, this supports environmental sustainability efforts and promotes greener, more eco-friendly cities.
 
-### 4. Enhanced User Experience:
+#### 4. Enhanced User Experience:
 For drivers, my solution offers a more seamless and convenient parking experience by reducing the frustration associated with illegal parking and congestion. This contributes to a positive urban environment where residents and visitors can navigate the city with ease and confidence.
 
-### Empowering Sustainable Urban Mobility:
+#### Empowering Sustainable Urban Mobility:
 By harnessing the capabilities of predictive modeling, I contribute to the advancement of sustainable urban mobility initiatives. My efforts aim to optimize parking enforcement practices, reduce congestion, enhance safety, and ultimately create more livable and accessible urban environments for all.
 
+### Streamlit Demo: Interactive Web Application
+
+The project includes an interactive web application built with Streamlit, a popular Python library for creating data-driven web applications. The Streamlit demo provides a user-friendly interface for exploring the predictive models and visualizing their results.
+
+**Features**
+1. Model Prediction: Users can input location data and receive predictions for potential parking violations and associated fines.
+2. Visualization: The application includes interactive visualizations to enhance understanding and interpretation of the model predictions.
+3. User-Friendly Interface: Streamlit's intuitive interface makes it easy for users to interact with the application and obtain insights from the predictive models.
+
+### Setup
+The project includes a YAML file named myenv.yml, which specifies the required dependencies and package versions for reproducibility.
+
+1. Clone the Repository: Start by cloning this repository to your local machine using Git.
+2. Create Conda Environment: Navigate to the project directory and create a new Conda environment using the provided YAML file.
+3. Activate Environment: Activate the newly created Conda environment.
+4. Launch Jupyter Notebook: Launch Jupyter Notebook to explore the project notebooks.
+
+Additional Notes:
+
+Ensure that you have Anaconda or Miniconda installed on your system before proceeding with the environment setup.
+If you encounter any issues during the setup process, please refer to the project documentation or reach out to the project team for assistance.
