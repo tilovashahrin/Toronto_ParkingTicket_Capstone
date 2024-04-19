@@ -1,8 +1,6 @@
 import altair as alt
 import pandas as pd
 import streamlit as st
-import matplotlib.pyplot as plt
-import numpy as np
 from geopy.geocoders import Nominatim
 import folium
 from folium.plugins import HeatMap
