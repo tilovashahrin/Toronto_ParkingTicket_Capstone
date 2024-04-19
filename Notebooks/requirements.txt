@@ -4,3 +4,7 @@ streamlit==1.33.0
 altair==5.3.0
 geopy==2.4.1
 scikit-learn==1.4.1.post1
+geographiclib==2.0
+cachetools==5.3.3
+plotly==5.20.0
+scikit-surprise==1.1.3
