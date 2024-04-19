@@ -1,7 +1,6 @@
 import pandas as pd
 import streamlit as st
 import joblib
-import matplotlib.pyplot as plt
 import numpy as np
 from geopy.geocoders import Nominatim
 
