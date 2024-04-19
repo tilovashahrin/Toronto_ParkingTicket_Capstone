@@ -107,7 +107,7 @@ if text_with_location in df['location2'].values:
         st.bar_chart(offence_revenue, color="#639cd9")
 
 else:
-    geolocator = Nominatim(user_agent="toronto-parking-application")
+    geolocator = Nominatim(user_agent="toronto-parking-map")
     location = geolocator.geocode(text_with_location)
     offence = ""
     if location.latitude is None:
@@ -118,8 +118,13 @@ else:
         output_text = ""
         for fine_amount, label in zip(fine_amounts, labels):
             offence = label
-            output_text += f"This model predicts a '{label}' parking ticket for this location area with a fine of ${fine_amount}."
-    
+            output_text += f"This model predicts a '{offence.replace('_', ' ')}' parking ticket for this location area with a fine of ${fine_amount}."
+
+        #description of infraction
+        descriptions = infraction_desc(labels)
+        formatted_labels = [label.replace('_', ' ').capitalize() for label in labels]
+        st.write(f"{descriptions}")
+
         output_placeholder.write(output_text) 
         #st.map(data = df, size=8, color="#5454c5", latitude = location.latitude, longitude = location.longitude)    
 
@@ -127,3 +132,11 @@ else:
         st.subheader(f"{offence.replace('_', ' ').capitalize()} Revenue") 
         offence_revenue = df[df[offence] == 1].groupby('year')['set_fine_amount'].sum()
         st.bar_chart(offence_revenue, color="#639cd9")
+
+#######################################################################################################################################
+###  Sidebar Info 
+st.sidebar.caption('Linkedin:')
+st.sidebar.write('👥 linkedin.com/tilovashahrin')
+
+st.sidebar.caption('Github:')
+st.sidebar.write('🖥️  github.com/tilovashahrin')
