@@ -14,9 +14,9 @@ def load_data(path, num_rows):
     return df
 
 # load data
-df = load_data("../data/parking_coord.csv", 1755214)
+df = load_data("../data/parking_coord_5_rows.csv", 5)
 st.write('Here are the first few rows of Toronto\'s Parking Ticket data from 2016 to 2022')
-st.dataframe(df.head())
+st.dataframe(df)
 
 #######################################################################################################################################
 ### Model
