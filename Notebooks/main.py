@@ -16,7 +16,7 @@ def load_data(path, num_rows):
     return df
 
 # load data 1755214
-df = load_data("../data/parking_df.csv", 12900000)
+df = load_data("../data/parking_coord_5_rows.csv", 5)
 st.write('Here are the first few rows of Toronto\'s Parking Ticket data from 2016 to 2022')
 st.dataframe(df.head())
 df_coord = df[df['latitude'] != 0]
@@ -70,10 +70,10 @@ st.write('March and October are peak times for enforcement.')
 
 month_names = {1: 'January', 2: 'February', 3: 'March', 4: 'April', 5: 'May', 6: 'June', 7: 'July', 8: 'August', 9: 'September', 10: 'October', 11: 'November', 12: 'December'}
 
-monthly_offences = df.groupby(df['month']).size()
+monthly_offences = load_data("../data/monthly_offences.csv", 12)
 monthly_offences_chart = pd.DataFrame({
-    'Month': [month_names[month] for month in monthly_offences.index],
-    'Count of Tickets': monthly_offences.values
+    'Month': [month_names[month] for month in monthly_offences.iloc[:12, 0]],
+    'Count of Tickets': monthly_offences.iloc[:12, 1]
 })
 month_order = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
 monthly_offences_chart['Month'] = pd.Categorical(monthly_offences_chart['Month'], categories=month_order, ordered=True)
