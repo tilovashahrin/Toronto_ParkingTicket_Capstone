@@ -1,0 +1,6 @@
+.DS_Store
+*.json
+*.xls
+*.pkl
+parking_df.csv
+.gitignore
