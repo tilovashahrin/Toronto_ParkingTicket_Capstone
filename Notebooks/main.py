@@ -84,8 +84,8 @@ chart2 = alt.Chart(monthly_offences_chart).mark_bar(color="#639cd9").encode(
 )
 st.altair_chart(chart2, theme='streamlit', use_container_width=True)
 
-df_sampled = df_coord.iloc[::2000]
-chart3 = alt.Chart(df_sampled).mark_rect().encode(
+heatmap_lat_lon = load_data("../data/heatmap_lat_lon.csv", 878)
+chart3 = alt.Chart(heatmap_lat_lon).mark_rect().encode(
     x=alt.X('longitude:Q', bin=True),
     y=alt.Y('latitude:Q', bin=True),
     color=alt.Color('count():Q', scale=alt.Scale(scheme='viridis'))
