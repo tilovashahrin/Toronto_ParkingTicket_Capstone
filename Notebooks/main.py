@@ -48,7 +48,7 @@ st.map(df, size=7, color="#639cd9")
 ### EDA 1
 st.subheader('Total Revenue by Year')
 st.write("The city made a whopping $100 Million CAD in 2016.")
-filtered_df = load_data("../data/total_fine_year.csv", 7)
+filtered_df = load_data("./data/total_fine_year.csv", 7)
 filtered_chart = pd.DataFrame({
     'Year': filtered_df.iloc[:7, 0],
     'Amount ($)': filtered_df.iloc[:7, 1]
@@ -83,7 +83,7 @@ chart2 = alt.Chart(monthly_offences_chart).mark_bar(color="#639cd9").encode(
 )
 st.altair_chart(chart2, theme='streamlit', use_container_width=True)
 
-heatmap_lat_lon = load_data("../data/heatmap_lat_lon.csv", 878)
+heatmap_lat_lon = load_data("./data/heatmap_lat_lon.csv", 878)
 chart3 = alt.Chart(heatmap_lat_lon).mark_rect().encode(
     x=alt.X('longitude:Q', bin=True),
     y=alt.Y('latitude:Q', bin=True),
