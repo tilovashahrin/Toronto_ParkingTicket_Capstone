@@ -49,10 +49,10 @@ st.map(df_coord, size=7, color="#639cd9")
 ### EDA 1
 st.subheader('Total Revenue by Year')
 st.write("The city made a whopping $100 Million CAD in 2016.")
-filtered_df = df.groupby('year')['set_fine_amount'].sum()
+filtered_df = load_data("../data/total_fine_year.csv", 7)
 filtered_chart = pd.DataFrame({
-    'Year': filtered_df.index,
-    'Amount ($)': filtered_df.values
+    'Year': filtered_df.iloc[:7, 0],
+    'Amount ($)': filtered_df.iloc[:7, 1]
 })
 
 # Convert 'Year' column to categorical
