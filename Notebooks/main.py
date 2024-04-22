@@ -39,15 +39,16 @@ st.write(model_desc)
 st.subheader("Exploratory Data Analysis")
 #######################################################################################################################################
 ### Create a map
+df_coord = load_data("./data/parking_coord.csv", 1700000)
 st.write("All Parking Tickets in Toronto")
-st.map(df, size=7, color="#639cd9")   
+st.map(df_coord, size=7, color="#639cd9")   
 
 #######################################################################################################################################
 ### Create EDAs
 
 ### EDA 1
 st.subheader('Total Revenue by Year')
-st.write("The city made a whopping $100 Million CAD in 2016.")
+st.write("The city made a whopping $100 Million CAD in 2016 and 2019.")
 filtered_df = load_data("./data/total_fine_year.csv", 7)
 filtered_chart = pd.DataFrame({
     'Year': filtered_df.iloc[:7, 0],
