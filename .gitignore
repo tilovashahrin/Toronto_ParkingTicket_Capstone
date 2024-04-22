@@ -3,5 +3,4 @@
 *.xls
 *.pkl
 parking_df.csv
-parking_coord.csv
 .gitignore
