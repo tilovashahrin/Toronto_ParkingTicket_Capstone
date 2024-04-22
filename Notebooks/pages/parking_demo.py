@@ -18,6 +18,7 @@ df = load_data("./data/parking_coord_5_rows.csv", 5)
 st.write('Here are the first few rows of Toronto\'s Parking Ticket data from 2016 to 2022')
 st.dataframe(df)
 
+df_coord = load_data("./data/parking_coord.csv", 1700000)
 #######################################################################################################################################
 ### Model
 st.subheader("Predictive Model")
@@ -27,7 +28,7 @@ def get_pred_output(latitude, longitude):
 
     prediction = model.predict(input_pred)
     indices = np.where(prediction == 1)
-    fine_amounts = df.iloc[indices[0]]['set_fine_amount']
+    fine_amounts = df_coord.iloc[indices[0]]['set_fine_amount']
     labels = infraction_types.columns[indices[1]]
 
     
@@ -69,9 +70,9 @@ def infraction_desc(labels):
     return description_str
 
 #if input address in dataframe
-if text_with_location in df['location2'].values:
+if text_with_location in df_coord['location2'].values:
     output_placeholder.write('running...')
-    matched_rows = df[df['location2'] == text_with_location]
+    matched_rows = df_coord[df_coord['location2'] == text_with_location]
     if not matched_rows.empty:
         offence = ""
         matched_row = matched_rows.iloc[0]
@@ -102,7 +103,7 @@ if text_with_location in df['location2'].values:
         
         #revenue bar chart
         st.subheader(f"Revenue of {offence.replace('_', ' ').capitalize()}") 
-        offence_revenue = df[df[offence] == 1].groupby('year')['set_fine_amount'].sum()
+        offence_revenue = df_coord[df_coord[offence] == 1].groupby('year')['set_fine_amount'].sum()
         st.bar_chart(offence_revenue, color="#639cd9")
 
 else:
@@ -129,7 +130,7 @@ else:
 
         #revenue bar chart
         st.subheader(f"{offence.replace('_', ' ').capitalize()} Revenue") 
-        offence_revenue = df[df[offence] == 1].groupby('year')['set_fine_amount'].sum()
+        offence_revenue = df_coord[df_coord[offence] == 1].groupby('year')['set_fine_amount'].sum()
         st.bar_chart(offence_revenue, color="#639cd9")
 
 #######################################################################################################################################
