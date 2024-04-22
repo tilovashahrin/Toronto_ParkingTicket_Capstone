@@ -130,8 +130,8 @@ st.altair_chart(chart4, use_container_width=True)
 
 #######################################################################################################################################
 ###  Sidebar Info 
-st.sidebar.caption('Linkedin:')
+st.sidebar.caption('Linkedin')
 st.sidebar.write('👥 linkedin.com/tilovashahrin')
 
-st.sidebar.caption('Github:')
+st.sidebar.caption('Github')
 st.sidebar.write('🖥️  github.com/tilovashahrin')

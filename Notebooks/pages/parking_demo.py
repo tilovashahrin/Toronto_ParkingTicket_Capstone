@@ -134,8 +134,8 @@ else:
 
 #######################################################################################################################################
 ###  Sidebar Info 
-st.sidebar.caption('Linkedin:')
+st.sidebar.caption('Linkedin')
 st.sidebar.write('👥 linkedin.com/tilovashahrin')
 
-st.sidebar.caption('Github:')
+st.sidebar.caption('Github')
 st.sidebar.write('🖥️  github.com/tilovashahrin')
