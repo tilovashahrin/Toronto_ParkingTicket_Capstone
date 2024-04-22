@@ -34,14 +34,15 @@ This knowledge empowers them to avoid potential violations, and reducing the lik
 
 st.subheader("Predictive Model")
 st.write(model_desc)
+st.write("Click on the parking demo tab to check it out!")
 
 
 st.subheader("Exploratory Data Analysis")
 #######################################################################################################################################
 ### Create a map
-df_coord = load_data("./data/parking_coord.csv", 1700000)
+heatmap_lat_lon = load_data("./data/heatmap_lat_lon.csv", 878)
 st.write("All Parking Tickets in Toronto")
-st.map(df_coord, size=7, color="#639cd9")   
+st.map(heatmap_lat_lon, size=7, color="#639cd9")   
 
 #######################################################################################################################################
 ### Create EDAs
@@ -84,7 +85,6 @@ chart2 = alt.Chart(monthly_offences_chart).mark_bar(color="#639cd9").encode(
 )
 st.altair_chart(chart2, theme='streamlit', use_container_width=True)
 
-heatmap_lat_lon = load_data("./data/heatmap_lat_lon.csv", 878)
 chart3 = alt.Chart(heatmap_lat_lon).mark_rect().encode(
     x=alt.X('longitude:Q', bin=True),
     y=alt.Y('latitude:Q', bin=True),
