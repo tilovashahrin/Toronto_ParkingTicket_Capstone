@@ -14,9 +14,10 @@ def load_data(path, num_rows):
     return df
 
 # load data
-df = load_data("./data/parking_coord_5_rows.csv", 5)
+df = load_data("./data/parking_coord.csv", 1700000)
+df_5 = load_data("./data/parking_coord_5_rows.csv", 5)
 st.write('Here are the first few rows of Toronto\'s Parking Ticket data from 2016 to 2022')
-st.dataframe(df)
+st.dataframe(df_5)
 
 #######################################################################################################################################
 ### Model
@@ -40,7 +41,7 @@ option = st.selectbox('Select an option', ['3042 Dundas St W', '4700 Keele St', 
 
 # If the selected option is 'Enter your own address', display a text input
 if option == 'Enter your own address':
-    text = st.text_input('Enter your address text below. Use street, west, avenue as (st, w, ave).', '4700 Keele St')
+    text = st.text_input('Enter your address text below. Use street, west, avenue as (st, w, ave). \n\n An address with no unit number may give multiple predictions.', '4700 Keele St')
 else:
     text = option
 
@@ -106,7 +107,7 @@ if text_with_location in df['location2'].values:
         st.bar_chart(offence_revenue, color="#639cd9")
 
 else:
-    geolocator = Nominatim(user_agent="toronto-parking-map")
+    geolocator = Nominatim(user_agent="toronto-parking")
     location = geolocator.geocode(text_with_location)
     offence = ""
     if location.latitude is None:
@@ -122,10 +123,11 @@ else:
         #description of infraction
         descriptions = infraction_desc(labels)
         formatted_labels = [label.replace('_', ' ').capitalize() for label in labels]
+        for formatted_label in formatted_labels:
+            st.subheader(formatted_label)
         st.write(f"{descriptions}")
 
         output_placeholder.write(output_text) 
-        #st.map(data = df, size=8, color="#5454c5", latitude = location.latitude, longitude = location.longitude)    
 
         #revenue bar chart
         st.subheader(f"{offence.replace('_', ' ').capitalize()} Revenue") 
