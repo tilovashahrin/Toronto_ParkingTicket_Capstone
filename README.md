@@ -1,5 +1,8 @@
 ## Toronto Parking Ticket Data Capstone
 
+**Demo Recording**
+[streamlit-main-2024-04-23-16-04-62.webm](https://github.com/tilovashahrin/Toronto_ParkingTicket_Capstone/assets/46762829/ab9f9831-e3b1-40ed-88b2-ea131885f218)
+
 **Dataset**: This dataset, available on Open Toronto's website, contains information about parking tickets issued in the city of Toronto from 2012 to 2022. It includes details such as the ticket issuance date, location, violation type, and fine amount. With approximately 2 million rows of data per year, this dataset provides a comprehensive record of parking violations in Toronto over a ten-year period.
 https://open.toronto.ca/dataset/parking-tickets/
 
@@ -92,11 +95,8 @@ The project includes an interactive web application built with Streamlit, a popu
 2. Visualization: The application includes interactive visualizations to enhance understanding and interpretation of the model predictions.
 3. User-Friendly Interface: Streamlit's intuitive interface makes it easy for users to interact with the application and obtain insights from the predictive models.
 
-**Demo Recording**
-
 ### Setup
 The project includes a YAML file named myenv.yml, which specifies the required dependencies and package versions for reproducibility.
-[streamlit-main-2024-04-23-16-04-62.webm](https://github.com/tilovashahrin/Toronto_ParkingTicket_Capstone/assets/46762829/ab9f9831-e3b1-40ed-88b2-ea131885f218)
 
 1. Clone the Repository: Start by cloning this repository to your local machine using Git.
 2. Create Conda Environment: Navigate to the project directory and create a new Conda environment using the provided YAML file.
