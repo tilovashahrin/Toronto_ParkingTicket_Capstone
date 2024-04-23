@@ -14,7 +14,7 @@ def load_data(path, num_rows):
     return df
 
 # load data
-df = load_data("../data/parking_coord_5_rows.csv", 5)
+df = load_data("./data/parking_coord_5_rows.csv", 5)
 st.write('Here are the first few rows of Toronto\'s Parking Ticket data from 2016 to 2022')
 st.dataframe(df)
 
@@ -34,7 +34,7 @@ def get_pred_output(latitude, longitude):
     return fine_amounts,labels
 
 #get model
-model = joblib.load('../Model/model_custom_best(2).pkl')
+model = joblib.load('./Model/model_custom_best(2).pkl')
 
 option = st.selectbox('Select an option', ['3042 Dundas St W', '4700 Keele St', '21 Hillcrest Ave', '60 St Patrick St', '692 Shaw St', '441 Rogers Rd', 'Enter your own address'])
 
