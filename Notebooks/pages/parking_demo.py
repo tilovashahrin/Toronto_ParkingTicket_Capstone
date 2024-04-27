@@ -3,6 +3,7 @@ import streamlit as st
 import joblib
 import numpy as np
 from geopy.geocoders import Nominatim
+import altair as alt
 
 #######################################################################################################################################
 ### set title and load data
@@ -102,13 +103,41 @@ if text_with_location in df['location2'].values:
         st.map(data = matched_rows, size=8, color="#639cd9", latitude = latitude, longitude = longitude, zoom=15) 
         
         #revenue bar chart
-        st.subheader(f"Revenue of {offence.replace('_', ' ').capitalize()}") 
-        offence_revenue = df[df[offence] == 1].groupby('year')['set_fine_amount'].sum()
-        st.bar_chart(offence_revenue, color="#639cd9")
+        # st.subheader(f"Revenue of {offence.replace('_', ' ').capitalize()}") 
+        # offence_revenue = df[df[offence] == 1].groupby('year')['set_fine_amount'].sum()
+        # st.bar_chart(offence_revenue, color="#639cd9")
+
+        #peak time bar chart
+        # Define hour categories
+        hour_categories = {
+            0: '00:00', 1: '01:00', 2: '02:00', 3: '03:00',
+            4: '04:00', 5: '05:00', 6: '06:00', 7: '07:00',
+            8: '08:00', 9: '09:00', 10: '10:00', 11: '11:00',
+            12: '12:00', 13: '13:00', 14: '14:00', 15: '15:00',
+            16: '16:00', 17: '17:00', 18: '18:00', 19: '19:00',
+            20: '20:00', 21: '21:00', 22: '22:00', 23: '23:00'
+        }
+        
+        st.subheader(f"Peak Times for {text.upper()}")
+        df['datetime_of_infraction'] = pd.to_datetime(df['datetime_of_infraction'])
+        loc_peak_time = df[df['location2'] == text_with_location].groupby(df['datetime_of_infraction'].dt.hour).size().reset_index(name='count')
+
+        hourly_peak_time_chart = pd.DataFrame({
+            'Hour': [hour_categories[hour] for hour in loc_peak_time['datetime_of_infraction']],
+            'Count of Infractions': loc_peak_time['count']
+        })
+        # Create Altair bar chart
+        chart = alt.Chart(hourly_peak_time_chart).mark_bar(color="#639cd9").encode(
+            x=alt.X('Hour', axis=alt.Axis(labelAngle=-45)),
+            y=alt.Y('Count of Infractions')
+        )
+
+        # Display the chart
+        st.altair_chart(chart, use_container_width=True)
 
 else:
-    geolocator = Nominatim(user_agent="toronto-parking")
-    location = geolocator.geocode(text_with_location)
+    geolocator = Nominatim(user_agent="toronto-parking-application")
+    location = geolocator.geocode(text_with_location, timeout=10)
     offence = ""
     if location.latitude is None:
         st.write("Address does not exist.")
