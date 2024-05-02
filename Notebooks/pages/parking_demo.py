@@ -4,6 +4,7 @@ import joblib
 import numpy as np
 from geopy.geocoders import Nominatim
 import altair as alt
+import folium
 
 #######################################################################################################################################
 ### set title and load data
@@ -39,6 +40,16 @@ def get_pred_output(latitude, longitude):
 
     
     return fine_amounts,labels
+
+def generate_map(address):
+    geolocator = Nominatim(user_agent="toronto-parking-application")
+    location = geolocator.geocode(address, timeout=10)
+    if location is not None:
+        m = folium.Map(location=[location.latitude, location.longitude], zoom_start=15)
+        folium.Marker([location.latitude, location.longitude], popup=address).add_to(m)
+        return m
+    else:
+        st.write("Address does not exist.")
 
 #get model
 model = joblib.load('../Model/model_custom_best(2).pkl')
@@ -106,11 +117,6 @@ if text_with_location in df['location2'].values:
         #map of address
         st.subheader(f"Map of {text.upper()}") 
         st.map(data = matched_rows, size=8, color="#639cd9", latitude = latitude, longitude = longitude, zoom=15) 
-        
-        #revenue bar chart
-        # st.subheader(f"Revenue of {offence.replace('_', ' ').capitalize()}") 
-        # offence_revenue = df[df[offence] == 1].groupby('year')['set_fine_amount'].sum()
-        # st.bar_chart(offence_revenue, color="#639cd9")
 
         #peak time bar chart
         # Define hour categories
@@ -162,12 +168,12 @@ else:
         st.write(f"{descriptions}")
 
         output_placeholder.write(output_text) 
-
-        #revenue bar chart
-        # st.subheader(f"{offence.replace('_', ' ').capitalize()} Revenue") 
-        # offence_revenue = df[df[offence] == 1].groupby('year')['set_fine_amount'].sum()
-        # st.bar_chart(offence_revenue, color="#639cd9")
-        #peak times bar chart
+        
+        st.subheader(f"Map of the  {text.upper()}:")
+        folium_map = generate_map(text_with_location)
+        if folium_map is not None:
+            folium_map.save("map.html")
+            st.components.v1.html(open("map.html", "r").read(), width=700, height=500)
 
 #######################################################################################################################################
 ###  Sidebar Info 
