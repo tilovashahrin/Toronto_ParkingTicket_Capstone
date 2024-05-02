@@ -34,13 +34,15 @@ def get_pred_output(latitude, longitude):
     input_pred = np.array([[latitude, longitude]])
 
     prediction = model.predict(input_pred)
+    if np.all(prediction == 0):
+        st.write("No parking tickets shown at this address.")
     indices = np.where(prediction == 1)
     fine_amounts = df.iloc[indices[0]]['set_fine_amount']
     labels = infraction_types.columns[indices[1]]
-
     
     return fine_amounts,labels
 
+#Generate Map
 def generate_map(address):
     geolocator = Nominatim(user_agent="toronto-parking-application")
     location = geolocator.geocode(address, timeout=10)
@@ -51,7 +53,7 @@ def generate_map(address):
     else:
         st.write("Address does not exist.")
 
-#get model
+#Get Model
 model = joblib.load('../Model/model_custom_best(2).pkl')
 
 option = st.selectbox('Select an option or enter your own address.', ['3042 Dundas St W', '4700 Keele St', '21 Hillcrest Ave', '60 St Patrick St', '692 Shaw St', '441 Rogers Rd', 'Enter your own address'])
@@ -151,15 +153,14 @@ else:
     
         output_text = ""
         for fine_amount, label in zip(fine_amounts, labels):
-            offence = label
-            output_text += f"This model predicts a '{offence.replace('_', ' ')}' parking ticket for this location area with a fine of ${fine_amount}."
-
-        #description of infraction
-        descriptions = infraction_desc(labels)
-        formatted_labels = [label.replace('_', ' ').capitalize() for label in labels]
-        for formatted_label in formatted_labels:
+            offence = label.replace('_', ' ')
+            output_text += f"This model predicts a '{offence}' parking ticket for this location area with a fine of ${fine_amount}.\n\n"
+            
+            description = infraction_desc([label])
+            #output_text += f"Description: {description}\n\n"
+            formatted_label = label.replace('_', ' ').capitalize()
             st.subheader(formatted_label)
-        st.write(f"{descriptions}")
+            st.write(f"{description}")
 
         output_placeholder.write(output_text) 
         
