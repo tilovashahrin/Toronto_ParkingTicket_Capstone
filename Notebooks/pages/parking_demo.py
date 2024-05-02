@@ -7,7 +7,7 @@ import altair as alt
 
 #######################################################################################################################################
 ### set title and load data
-st.title("Predictive Model Demo")
+st.title("ParkSmart 🚗")
 
 @st.cache_data 
 def load_data(path, num_rows):
@@ -15,14 +15,19 @@ def load_data(path, num_rows):
     return df
 
 # load data
-df = load_data("./data/parking_coord.csv", 1700000)
-df_5 = load_data("./data/parking_coord_5_rows.csv", 5)
-st.write('Here are the first few rows of Toronto\'s Parking Ticket data from 2016 to 2022')
-st.dataframe(df_5)
+df = load_data("../data/parking_coord.csv", 1700000)
+# df_5 = load_data("../data/parking_coord_5_rows.csv", 5)
+# st.write('Here are the first few rows of Toronto\'s Parking Ticket data from 2016 to 2022')
+# st.dataframe(df_5)
 
 #######################################################################################################################################
 ### Model
-st.subheader("Predictive Model")
+st.write('''
+        Introducing ParkSmart, your ultimate parking pal in the urban jungle. 
+        Simply enter your destination, and it displays a maze of parking regulations, 
+        showing you which violations lurk in the shadows of your chosen address. But that's not all – 
+        ParkSmart also sheds light on peak parking times. Start parking worry free!
+''')
 #function to retrieve prediction
 def get_pred_output(latitude, longitude):
     input_pred = np.array([[latitude, longitude]])
@@ -36,9 +41,9 @@ def get_pred_output(latitude, longitude):
     return fine_amounts,labels
 
 #get model
-model = joblib.load('./Model/model_custom_best(2).pkl')
+model = joblib.load('../Model/model_custom_best(2).pkl')
 
-option = st.selectbox('Select an option', ['3042 Dundas St W', '4700 Keele St', '21 Hillcrest Ave', '60 St Patrick St', '692 Shaw St', '441 Rogers Rd', 'Enter your own address'])
+option = st.selectbox('Select an option or enter your own address.', ['3042 Dundas St W', '4700 Keele St', '21 Hillcrest Ave', '60 St Patrick St', '692 Shaw St', '441 Rogers Rd', 'Enter your own address'])
 
 # If the selected option is 'Enter your own address', display a text input
 if option == 'Enter your own address':
@@ -124,12 +129,12 @@ if text_with_location in df['location2'].values:
 
         hourly_peak_time_chart = pd.DataFrame({
             'Hour': [hour_categories[hour] for hour in loc_peak_time['datetime_of_infraction']],
-            'Count of Infractions': loc_peak_time['count']
+            'Number of Tickets': loc_peak_time['count']
         })
         # Create Altair bar chart
         chart = alt.Chart(hourly_peak_time_chart).mark_bar(color="#639cd9").encode(
             x=alt.X('Hour', axis=alt.Axis(labelAngle=-45)),
-            y=alt.Y('Count of Infractions')
+            y=alt.Y('Number of Tickets')
         )
 
         # Display the chart
@@ -159,9 +164,10 @@ else:
         output_placeholder.write(output_text) 
 
         #revenue bar chart
-        st.subheader(f"{offence.replace('_', ' ').capitalize()} Revenue") 
-        offence_revenue = df[df[offence] == 1].groupby('year')['set_fine_amount'].sum()
-        st.bar_chart(offence_revenue, color="#639cd9")
+        # st.subheader(f"{offence.replace('_', ' ').capitalize()} Revenue") 
+        # offence_revenue = df[df[offence] == 1].groupby('year')['set_fine_amount'].sum()
+        # st.bar_chart(offence_revenue, color="#639cd9")
+        #peak times bar chart
 
 #######################################################################################################################################
 ###  Sidebar Info 
