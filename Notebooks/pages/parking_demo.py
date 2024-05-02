@@ -115,28 +115,22 @@ if text_with_location in df['location2'].values:
         st.write(f"{descriptions}")
 
         #map of address
-        st.subheader(f"Map of {text.upper()}") 
-        st.map(data = matched_rows, size=8, color="#639cd9", latitude = latitude, longitude = longitude, zoom=15) 
-
-        #peak time bar chart
-        # Define hour categories
-        hour_categories = {
-            0: '00:00', 1: '01:00', 2: '02:00', 3: '03:00',
-            4: '04:00', 5: '05:00', 6: '06:00', 7: '07:00',
-            8: '08:00', 9: '09:00', 10: '10:00', 11: '11:00',
-            12: '12:00', 13: '13:00', 14: '14:00', 15: '15:00',
-            16: '16:00', 17: '17:00', 18: '18:00', 19: '19:00',
-            20: '20:00', 21: '21:00', 22: '22:00', 23: '23:00'
-        }
+        st.subheader(f"Map of {text.upper()}")
+        folium_map = generate_map(text_with_location)
+        if folium_map is not None:
+            folium_map.save("map.html")
+            st.components.v1.html(open("map.html", "r").read(), width=700, height=500)
         
+        #peak times bar chart
         st.subheader(f"Peak Times for {text.upper()}")
         df['datetime_of_infraction'] = pd.to_datetime(df['datetime_of_infraction'])
         loc_peak_time = df[df['location2'] == text_with_location].groupby(df['datetime_of_infraction'].dt.hour).size().reset_index(name='count')
 
         hourly_peak_time_chart = pd.DataFrame({
-            'Hour': [hour_categories[hour] for hour in loc_peak_time['datetime_of_infraction']],
+            'Hour': [f"{hour:02}:00" for hour in loc_peak_time['datetime_of_infraction']],
             'Number of Tickets': loc_peak_time['count']
         })
+
         # Create Altair bar chart
         chart = alt.Chart(hourly_peak_time_chart).mark_bar(color="#639cd9").encode(
             x=alt.X('Hour', axis=alt.Axis(labelAngle=-45)),
