@@ -16,7 +16,7 @@ def load_data(path, num_rows):
     return df
 
 # load data 1755214
-df = load_data("../data/parking_coord_5_rows.csv", 5)
+df = load_data("./data/parking_coord_5_rows.csv", 5)
 st.write('Here are the first few rows of Toronto\'s Parking Ticket data from 2016 to 2022')
 st.dataframe(df)
 #######################################################################################################################################
@@ -40,7 +40,7 @@ st.write("Click on the parking demo tab to check it out!")
 st.subheader("Exploratory Data Analysis")
 #######################################################################################################################################
 ### Create a map
-heatmap_lat_lon = load_data("../data/heatmap_lat_lon.csv", 878)
+heatmap_lat_lon = load_data("./data/heatmap_lat_lon.csv", 878)
 st.write("All Parking Tickets in Toronto")
 st.map(heatmap_lat_lon, size=7, color="#639cd9")   
 
@@ -50,7 +50,7 @@ st.map(heatmap_lat_lon, size=7, color="#639cd9")
 ### EDA 1
 st.subheader('Total Revenue by Year')
 st.write("The city made a whopping $100 Million CAD in 2016 and 2019.")
-filtered_df = load_data("../data/total_fine_year.csv", 7)
+filtered_df = load_data("./data/total_fine_year.csv", 7)
 filtered_chart = pd.DataFrame({
     'Year': filtered_df.iloc[:7, 0],
     'Amount ($)': filtered_df.iloc[:7, 1]
@@ -71,7 +71,7 @@ st.write('March and October are peak times for enforcement.')
 
 month_names = {1: 'January', 2: 'February', 3: 'March', 4: 'April', 5: 'May', 6: 'June', 7: 'July', 8: 'August', 9: 'September', 10: 'October', 11: 'November', 12: 'December'}
 
-monthly_offences = load_data("../data/monthly_offences.csv", 12)
+monthly_offences = load_data("./data/monthly_offences.csv", 12)
 monthly_offences_chart = pd.DataFrame({
     'Month': [month_names[month] for month in monthly_offences.iloc[:12, 0]],
     'Count of Tickets': monthly_offences.iloc[:12, 1]
@@ -117,7 +117,7 @@ st.altair_chart(chart3, theme='streamlit', use_container_width=True)
 # df_2022['hour_category'] = df_2022['hour'].map(hour_categories)
 
 # # Group by hour category and count infractions
-infraction_hour = load_data("../data/hour_peak_histogram.csv", 24)
+infraction_hour = load_data("./data/hour_peak_histogram.csv", 24)
 
 chart4 = alt.Chart(infraction_hour).mark_bar(color="#639cd9").encode(
     x=alt.X('hour_category:O', title='Hour of Day',  axis=alt.Axis(labelAngle=-45)),
