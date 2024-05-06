@@ -45,22 +45,42 @@ treatment, mostly if enforcement practices appear biased or inequitable. Residen
 
 ## Project Files Breakdown
 
-### Docs
-- **Sprint0_Tilova_Shahrin.pdf**: Documentation for Sprint 0, outlining project goals, scope, and initial planning.
-- **Sprint1_Presentation_TilovaShahrin.pdf**: Presentation slides for Sprint 1, covering progress, challenges, and next steps.
-- **Sprint2_Presentation_TilovaShahrin.pdf**: Presentation slides for Sprint 2, highlighting further progress, results, and future plans.
+Toronto_ParkingTicket_Capstone/
+│
+├── Docs/
+│   ├── Sprint0_Tilova_Shahrin.pdf
+│   ├── Sprint1_Presentation_TilovaShahrin.pdf
+│   ├── Sprint2_Presentation_TilovaShahrin.pdf
+│   └── Tilova_Shahrin_Sprint3_Presentation.pdf
+│
+├── Model/
+│   └── model_custom_best(2).pkl
+│
+├── Notebooks/
+│   ├── .ipynb_checkpoints/
+│   ├── 1_Cleaning_and_EDA.ipynb
+│   ├── 2_Feature_Engineering_Preprocessing_and_EDA.ipynb
+│   ├── 3_Modeling.ipynb
+│   ├── 4_Advanced_Modeling.ipynb
+│   ├── main.py
+│   ├── map.html
+│   ├── requirements.txt
+│   └──pages/
+│       └── parking_demo.py
+│
+│
+├── data/
+│   ├── fee_related_revenue.csv
+│   ├── heatmap_coord.csv
+│   ├── heatmap_lat_lon.csv
+│   ├── hour_peak_histogram.csv
+│   ├── monthly_offences.csv
+│   ├── parking_coord_5_rows.csv
+│   └── total_fine_year.csv
+│
+├── README.md
+└── myenv.yml
 
-### Notebooks
-- **1. Cleaning and EDA.ipynb**: Notebook focusing on data cleaning and exploratory data analysis (EDA) tasks.
-- **2. Feature Engineering, Preprocessing and EDA.ipynb**: Notebook dedicated to feature engineering, preprocessing, and further EDA.
-- **3. Modeling.ipynb**: Notebook containing initial modeling efforts and evaluation.
-- **4. Advanced Modeling.ipynb**: Notebook exploring advanced modeling techniques, hyperparameter tuning, and model optimization.
-
-### README.md
-- **README.md**: Main documentation file providing an overview of the project, its components, and instructions for setup and usage.
-
-### Environment Configuration
-- **myenv.yml**: YAML file specifying the environment configuration, including dependencies and package versions, for reproducibility and ease of setup.
 
 ## Solution Impact: Enhancing Parking Enforcement Efficiency
 
