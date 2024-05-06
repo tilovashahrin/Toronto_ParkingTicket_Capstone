@@ -44,43 +44,40 @@ treatment, mostly if enforcement practices appear biased or inequitable. Residen
 | Province               | Province of vehicle liscense plate.                                                               | 
 
 ## Project Files Breakdown
-
-Toronto_ParkingTicket_Capstone/
-│
-├── Docs/
-│   ├── Sprint0_Tilova_Shahrin.pdf
-│   ├── Sprint1_Presentation_TilovaShahrin.pdf
-│   ├── Sprint2_Presentation_TilovaShahrin.pdf
-│   └── Tilova_Shahrin_Sprint3_Presentation.pdf
-│
-├── Model/
-│   └── model_custom_best(2).pkl
-│
-├── Notebooks/
-│   ├── .ipynb_checkpoints/
-│   ├── 1_Cleaning_and_EDA.ipynb
-│   ├── 2_Feature_Engineering_Preprocessing_and_EDA.ipynb
-│   ├── 3_Modeling.ipynb
-│   ├── 4_Advanced_Modeling.ipynb
-│   ├── main.py
-│   ├── map.html
-│   ├── requirements.txt
-│   └──pages/
-│       └── parking_demo.py
-│
-│
-├── data/
-│   ├── fee_related_revenue.csv
-│   ├── heatmap_coord.csv
-│   ├── heatmap_lat_lon.csv
-│   ├── hour_peak_histogram.csv
-│   ├── monthly_offences.csv
-│   ├── parking_coord_5_rows.csv
-│   └── total_fine_year.csv
-│
-├── README.md
-└── myenv.yml
-
+    .  
+    ├── Docs/
+    │   ├── Sprint0_Tilova_Shahrin.pdf
+    │   ├── Sprint1_Presentation_TilovaShahrin.pdf
+    │   ├── Sprint2_Presentation_TilovaShahrin.pdf
+    │   └── Tilova_Shahrin_Sprint3_Presentation.pdf
+    │
+    ├── Model/
+    │   └── model_custom_best(2).pkl
+    │
+    ├── Notebooks/
+    │   ├── .ipynb_checkpoints/
+    │   ├── 1_Cleaning_and_EDA.ipynb
+    │   ├── 2_Feature_Engineering_Preprocessing_and_EDA.ipynb
+    │   ├── 3_Modeling.ipynb
+    │   ├── 4_Advanced_Modeling.ipynb
+    │   ├── main.py
+    │   ├── map.html
+    │   ├── requirements.txt
+    │   └── pages/
+    │       └── parking_demo.py
+    │
+    ├── data/
+    │   ├── fee_related_revenue.csv
+    │   ├── heatmap_coord.csv
+    │   ├── heatmap_lat_lon.csv
+    │   ├── hour_peak_histogram.csv
+    │   ├── monthly_offences.csv
+    │   ├── parking_coord_5_rows.csv
+    │   └── total_fine_year.csv
+    │
+    ├── README.md
+    │
+    └── myenv.yml
 
 ## Solution Impact: Enhancing Parking Enforcement Efficiency
 
