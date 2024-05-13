@@ -2,4 +2,5 @@
 *.json
 *.xls
 parking_df.csv
+parking_coord.csv
 .gitignore
