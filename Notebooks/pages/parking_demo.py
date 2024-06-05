@@ -7,6 +7,7 @@ import altair as alt
 import folium
 import boto3
 from io import StringIO
+from io import BytesIO
 
 #######################################################################################################################################
 ### set title and load data
@@ -76,7 +77,20 @@ def generate_map(address):
         st.write("Address does not exist.")
 
 #Get Model
-model = joblib.load('./Model/model_custom_best(2).pkl')
+# model = joblib.load('./Model/model_custom_best(2).pkl')
+s3 = boto3.client(
+    's3',
+    aws_access_key_id=st.secrets["AWS_ACCESS_KEY_ID"],
+    aws_secret_access_key=st.secrets["AWS_SECRET_ACCESS_KEY"],
+    region_name=st.secrets["AWS_DEFAULT_REGION"]
+)
+# Download the model file from S3
+model_key = "model_custom_best(2).pkl"
+response = s3.get_object(Bucket=bucket_name, Key=model_key)
+model_bytes = response['Body'].read()
+
+# Load the model from the downloaded bytes
+model = joblib.load(BytesIO(model_bytes))
 
 option = st.selectbox('Select an option or enter your own address.', ['3042 Dundas St W', '4700 Keele St', '21 Hillcrest Ave', '60 St Patrick St', '692 Shaw St', '441 Rogers Rd', 'Enter your own address'])
 
