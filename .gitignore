@@ -1,6 +1,8 @@
 .DS_Store
 *.json
 *.xls
+.devcontainer
+.ipynb_checkpoints
 parking_df.csv
 parking_coord.csv
 .gitignore
