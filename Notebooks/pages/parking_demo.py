@@ -33,7 +33,7 @@ def load_data(path, num_rows):
     return df
 
 # load data
-df = load_data("./data/parking_coord.csv", 1700000)
+#df = load_data("./data/parking_coord.csv", 1700000)
 # df_5 = load_data("../data/parking_coord_5_rows.csv", 5)
 # st.write('Here are the first few rows of Toronto\'s Parking Ticket data from 2016 to 2022')
 # st.dataframe(df_5)
@@ -42,6 +42,7 @@ df = load_data("./data/parking_coord.csv", 1700000)
 bucket_name = 'tilovastreamlitbucket'
 file_key = 'parking_coord.csv'
 df = load_data_from_s3(bucket_name, file_key, 1700000)
+
 #######################################################################################################################################
 ### Model
 st.write('''
