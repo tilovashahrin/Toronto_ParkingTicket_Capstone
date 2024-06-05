@@ -54,7 +54,7 @@ def generate_map(address):
         st.write("Address does not exist.")
 
 #Get Model
-model = joblib.load('../Model/model_custom_best(2).pkl')
+model = joblib.load('./Model/model_custom_best(2).pkl')
 
 option = st.selectbox('Select an option or enter your own address.', ['3042 Dundas St W', '4700 Keele St', '21 Hillcrest Ave', '60 St Patrick St', '692 Shaw St', '441 Rogers Rd', 'Enter your own address'])
 
