@@ -5,10 +5,27 @@ import numpy as np
 from geopy.geocoders import Nominatim
 import altair as alt
 import folium
+import boto3
+from io import StringIO
 
 #######################################################################################################################################
 ### set title and load data
 st.title("ParkSmart 🚗")
+@st.cache_data 
+def load_data_from_s3(bucket_name, file_key, num_rows):
+    s3 = boto3.client(
+        's3',
+        aws_access_key_id=st.secrets["AWS_ACCESS_KEY_ID"],
+        aws_secret_access_key=st.secrets["AWS_SECRET_ACCESS_KEY"],
+        region_name=st.secrets["AWS_DEFAULT_REGION"]
+    )
+    
+    # Get the object from the bucket
+    obj = s3.get_object(Bucket=bucket_name, Key=file_key)
+    
+    # Read the CSV content
+    df = pd.read_csv(StringIO(obj['Body'].read().decode('utf-8')), nrows=num_rows)
+    return df
 
 @st.cache_data 
 def load_data(path, num_rows):
@@ -21,6 +38,10 @@ df = load_data("./data/parking_coord.csv", 1700000)
 # st.write('Here are the first few rows of Toronto\'s Parking Ticket data from 2016 to 2022')
 # st.dataframe(df_5)
 
+# Load data from S3
+bucket_name = 'tilovastreamlitbucket'
+file_key = 'parking_coord.csv'
+df = load_data_from_s3(bucket_name, file_key, 1700000)
 #######################################################################################################################################
 ### Model
 st.write('''
