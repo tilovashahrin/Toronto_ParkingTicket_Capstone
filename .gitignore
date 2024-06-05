@@ -5,4 +5,5 @@
 .ipynb_checkpoints
 parking_df.csv
 parking_coord.csv
+.streamlit
 .gitignore
