@@ -1,2 +1,0 @@
-data/parking_coord.csv filter=lfs diff=lfs merge=lfs -text
-Model/model_custom_best(2).pkl filter=lfs diff=lfs merge=lfs -text
