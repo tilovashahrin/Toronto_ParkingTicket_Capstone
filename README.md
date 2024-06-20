@@ -1,7 +1,7 @@
 ## Toronto Parking Ticket Data Capstone
 
 **Click Here to Check out my Streamlit Demo!**
-[streamlit-main-2024-04-23-16-04-62.webm](https://github.com/tilovashahrin/Toronto_ParkingTicket_Capstone/assets/46762829/ab9f9831-e3b1-40ed-88b2-ea131885f218)
+[streamlit-main-2024-04-23-16-04-62.webm](parksmart.streamlit.app)
 
 **Dataset**: This dataset, available on Open Toronto's website, contains information about parking tickets issued in the city of Toronto from 2012 to 2022. It includes details such as the ticket issuance date, location, violation type, and fine amount. With approximately 2 million rows of data per year, this dataset provides a comprehensive record of parking violations in Toronto over a ten-year period.
 https://open.toronto.ca/dataset/parking-tickets/
